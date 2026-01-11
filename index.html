@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Site Temporarily Unavailable</title>
+  <!-- Favicon -->
+    <link rel="icon" href="/assets/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png" />
+  <meta name="robots" content="noindex" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #020617;
+      --card-bg: rgba(2, 6, 23, 0.92);
+      --accent: #38bdf8;
+      --danger: #f87171;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-soft: rgba(255, 255, 255, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Ubuntu, Cantarell, sans-serif;
+      background:
+        radial-gradient(1000px 500px at 50% -20%, #0f172a, #020617);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    
+    .logo {
+        display: block;          /* important */
+        width: 125px;
+        margin: 0 auto 16px;     /* auto left/right */
+        opacity: 0.85;
+    }
+
+    .card {
+      max-width: 560px;
+      width: 100%;
+      padding: 40px 36px;
+      border-radius: 22px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      box-shadow:
+        0 40px 80px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      animation: fadeInUp 0.6s ease-out;
+      position: relative;
+    }
+
+    /* Accent bar */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 20px;
+      right: 20px;
+      height: 5px;
+      border-radius: 999px;
+      background: linear-gradient(
+        90deg,
+        var(--danger),
+        #fb7185
+      );
+      opacity: 0.95;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .icon {
+        display: block;
+        text-align: center;
+        font-size: 2.6rem;
+        margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--danger);
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 12px 0;
+      line-height: 1.65;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .status-link {
+        display: flex;              /* 👈 key change */
+        justify-content: center;
+        gap: 10px;
+        margin: 22px auto 0;        /* auto left & right */
+        padding: 13px 22px;
+        border-radius: 999px;
+        background: linear-gradient(
+            180deg,
+            rgba(56, 189, 248, 0.18),
+            rgba(56, 189, 248, 0.08)
+        );
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.2s ease,
+                    box-shadow 0.2s ease,
+                    background 0.2s ease;
+    }
+
+
+    .status-link:hover {
+      background: linear-gradient(
+        180deg,
+        rgba(56, 189, 248, 0.26),
+        rgba(56, 189, 248, 0.14)
+      );
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.25);
+    }
+
+    .footer {
+      margin-top: 26px;
+      font-size: 0.9rem;
+      color: #64748b;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <img
+        src="assets/logo/logo-ag-light.webp"
+        alt="Kaushik Parui"
+        class="logo"
+    />
+    <div class="icon">🚨</div>
+
+    <h1>Website Temporarily Unavailable</h1>
+
+    <p>
+      <strong>kaushikparui.com</strong> is currently experiencing an issue.
+    </p>
+
+    <p>
+      We’re aware of the issue and are working to restore the service as soon
+      as possible.
+    </p>
+
+    <a
+      class="status-link"
+      href="https://status.kaushikparui.com"
+      rel="noopener noreferrer"
+    >
+      View live status updates →
+    </a>
+
+    <div class="footer">
+      Thanks for your patience. Please check back shortly.
+    </div>
+  </div>
+</body>
+</html>
