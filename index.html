@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Site Temporarily Unavailable</title>
+  <title>Site Temporarily Unavailable | Kaushik Parui</title>
 
   <!-- Favicon -->
   <link rel="icon" href="/assets/favicon/favicon.ico" />
@@ -12,9 +12,38 @@
   <!-- CSS -->
   <link rel="stylesheet" href="styles/outage.css" />
 
-  <meta name="robots" content="noindex" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- SEO -->
+  <meta name="description" content="Temporary outage. Kaushik Parui portfolio is currently unavailable. Check live system status for updates." />
+  <meta name="author" content="Kaushik Parui" />
 
+  <!-- Prevent indexing -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Canonical (point to main site) -->
+  <link rel="canonical" href="https://www.kaushikparui.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Service Unavailable | Kaushik Parui" />
+  <meta property="og:description" content="The site is temporarily down. We're working to restore it quickly." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://outage.kaushikparui.com" />
+  <meta property="og:image" content="https://www.kaushikparui.com/social-preview.webp" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Service Unavailable | Kaushik Parui" />
+  <meta name="twitter:description" content="Temporary outage. Live status available." />
+  <meta name="twitter:image" content="https://www.kaushikparui.com/social-preview.webp" />
+
+  <!-- Theme color -->
+  <meta name="theme-color" content="#090412" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#6d28d9" media="(prefers-color-scheme: light)" />
+
+  <!-- Performance -->
+  <link rel="preload" as="image" href="assets/logo/logo-ag-light.webp" />
+  <link rel="preload" as="image" href="assets/logo/logo-ag-dark.webp" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
@@ -65,14 +94,11 @@
 
     const savedTheme = localStorage.getItem("theme");
 
-    // 👇 Updated logic
     let theme;
 
     if (savedTheme) {
-      // User preference wins
       theme = savedTheme;
     } else {
-      // System preference OR fallback to dark
       const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
       theme = prefersLight ? "light" : "dark";
     }

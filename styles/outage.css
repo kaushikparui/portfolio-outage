@@ -206,7 +206,7 @@ body.light .status-link {
 
 body.light .status-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+  box-shadow: 0 10px 30px rgba(24, 84, 110, 0.628);
 }
 
 body.dark .status-link:hover {
