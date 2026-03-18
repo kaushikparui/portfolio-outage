@@ -1,0 +1,221 @@
+:root {
+  --accent: #f3f5f6;
+  --danger: #f54242;
+  --border-soft: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Ubuntu, Cantarell, sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+
+  transition: background 0.4s ease, color 0.3s ease;
+}
+
+/* 🌞 Light Theme */
+body.light {
+  --bg-start: #6d28d9;
+  --bg-end: #f472b6;
+
+  --card-bg: rgba(255, 255, 255, 0.92);
+
+  --text-main: #020617;
+  --text-muted: #334155;
+}
+
+/* 🌙 Dark Theme */
+body.dark {
+  --bg-start: #090412;
+  --bg-end: #7f1d1d;
+
+  --card-bg: rgba(9, 4, 18, 0.85);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+body {
+  background: linear-gradient(to bottom, var(--bg-start), var(--bg-end));
+  color: var(--text-main);
+}
+
+/* Toggle */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  border: none;
+  cursor: pointer;
+
+  font-size: 1.2rem;
+  padding: 10px 14px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+
+  color: var(--text-main);
+
+  transition: all 0.25s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Logo */
+.logo-container {
+  position: relative;
+  width: 125px;
+  height: 40px;
+  margin: 0 auto 16px;
+  aspect-ratio: 5 / 2;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+body.dark .logo-dark {
+  opacity: 1;
+}
+
+body.light .logo-light {
+  opacity: 1;
+}
+
+/* Card */
+.card {
+  max-width: 560px;
+  width: 100%;
+  padding: 42px 36px;
+  border-radius: 24px;
+
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+
+  border: 1px solid var(--border-soft);
+
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  animation: fadeInUp 0.6s ease-out;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 24px;
+  right: 24px;
+  height: 5px;
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, #fb2545, #fb2545);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.icon {
+  font-size: 2.8rem;
+  margin-bottom: 18px;
+}
+
+h1 {
+    margin: 0 0 14px;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--danger);
+    letter-spacing: -0.02em
+}
+
+p {
+  margin: 12px 0;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+strong {
+  color: var(--text-main);
+}
+
+/* Button */
+.status-link {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  margin: 24px auto 0;
+  padding: 13px 24px;
+
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+
+  transition: all 0.25s ease;
+}
+
+/* 🌙 Dark mode button (glass) */
+body.dark .status-link {
+  background: linear-gradient(
+    180deg,
+    rgba(56, 189, 248, 0.22),
+    rgba(56, 189, 248, 0.1)
+  );
+  color: var(--accent);
+}
+
+/* 🌞 Light mode button (solid + contrast) */
+body.light .status-link {
+  background: linear-gradient(
+    180deg,
+    rgb(26, 34, 11),
+    rgb(14, 36, 44)
+  );
+  color: var(--accent); /* 👈 BLACK / BODY COLOR */
+}
+
+body.light .status-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+}
+
+body.dark .status-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+}
+
+.footer {
+  margin-top: 28px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
