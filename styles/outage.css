@@ -39,14 +39,15 @@ body.dark {
   --bg-start: #090412;
   --bg-end: #7f1d1d;
 
-  --card-bg: rgba(9, 4, 18, 0.85);
+  --card-bg: rgba(28, 13, 56, 0.85);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
 }
 
 body {
-  background: linear-gradient(to bottom, var(--bg-start), var(--bg-end));
-  color: var(--text-main);
+  background: linear-gradient(270deg, var(--bg-start), var(--bg-end));
+  background-size: 400% 400%;
+  animation: gradientMove 13s ease infinite;
 }
 
 /* Toggle */
@@ -120,6 +121,11 @@ body.light .logo-light {
 
   animation: fadeInUp 0.6s ease-out;
   position: relative;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
 }
 
 .card::before {
@@ -145,9 +151,22 @@ body.light .logo-light {
   }
 }
 
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.85; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 .icon {
   font-size: 2.8rem;
   margin-bottom: 18px;
+  animation: pulse 1.8s infinite;
 }
 
 h1 {
@@ -170,7 +189,8 @@ strong {
 
 /* Button */
 .status-link {
-  display: flex;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
   gap: 10px;
 
@@ -181,15 +201,48 @@ strong {
   text-decoration: none;
   font-weight: 600;
 
+  position: relative;
+  overflow: hidden;
+
   transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+/* Glow layer */
+.status-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover effect */
+.status-link:hover::after {
+  opacity: 1;
+}
+
+.status-link * {
+  position: relative;
+  z-index: 1;
+}
+
+.status-link:hover {
+  transform: translateY(-2px);
+}
+
+.status-link:focus-visible {
+  outline: 2px solid rgba(56, 189, 248, 0.6);
+  outline-offset: 3px;
 }
 
 /* 🌙 Dark mode button (glass) */
 body.dark .status-link {
   background: linear-gradient(
     180deg,
-    rgba(56, 189, 248, 0.22),
-    rgba(56, 189, 248, 0.1)
+    rgba(56, 189, 248, 0.25),
+    rgba(56, 189, 248, 0.12)
   );
   color: var(--accent);
 }
@@ -201,7 +254,7 @@ body.light .status-link {
     rgb(26, 34, 11),
     rgb(14, 36, 44)
   );
-  color: var(--accent); /* 👈 BLACK / BODY COLOR */
+  color: var(--accent);
 }
 
 body.light .status-link:hover {
